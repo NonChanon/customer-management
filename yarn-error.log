@@ -1,0 +1,51 @@
+Arguments: 
+  C:\Program Files (x86)\nodejs\node.exe C:\Users\Chanon\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add --dev @iconify/react
+
+PATH: 
+  C:\Python311\Scripts\;C:\Python311\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\nodejs\;C:\Program Files\Git\cmd;C:\Users\Chanon\AppData\Local\Microsoft\WindowsApps;;C:\Users\Chanon\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Chanon\AppData\Roaming\npm
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.16.1
+
+Platform: 
+  win32 ia32
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'D:\Work\งานนอก\material-tailwind-project\node_modules\esbuild-windows-32\esbuild.exe'
+
+npm manifest: 
+  {
+    "name": "material-tailwind-project",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+      "dev": "vite",
+      "build": "vite build",
+      "preview": "vite preview"
+    },
+    "dependencies": {
+      "@material-tailwind/react": "2.0.4",
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "react-router-dom": "^6.14.2"
+    },
+    "devDependencies": {
+      "@types/react": "18.0.17",
+      "@types/react-dom": "18.0.6",
+      "@vitejs/plugin-react": "2.1.0",
+      "autoprefixer": "10.4.14",
+      "postcss": "8.4.24",
+      "tailwindcss": "3.3.2",
+      "vite": "3.1.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
