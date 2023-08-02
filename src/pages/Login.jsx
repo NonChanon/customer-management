@@ -12,8 +12,10 @@ import { Icon } from "@iconify/react";
 export default function Login() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-[#FAFAFC]">
-      <form className="flex flex-col items-center justify-center w-80 h-[350px] -mt-[100px] p-10 rounded-lg shadow-xl bg-white">
-        <span className="text-xl font-bold">LOGIN</span>
+      <form className="flex flex-col items-center w-80 h-[350px] -mt-[100px] p-10 rounded-lg shadow-xl bg-white">
+        <span className="text-xl font-bold text-indigo-600 text-center">
+          LOGIN
+        </span>
         <div className="my-7 flex flex-col gap-6 w-full">
           <Input
             color="indigo"
@@ -22,6 +24,7 @@ export default function Login() {
             icon={<Icon icon="teenyicons:user-circle-outline" />}
           />
           <Input
+            type="password"
             color="indigo"
             size="lg"
             label="Password"
