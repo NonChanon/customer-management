@@ -1,12 +1,6 @@
 import React from "react";
 
-import {
-  Card,
-  Input,
-  Checkbox,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
+import { Input, Button } from "@material-tailwind/react";
 import { Icon } from "@iconify/react";
 
 export default function Login() {

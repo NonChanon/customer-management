@@ -25,6 +25,7 @@ const title = [
   "สถานะล่าสุด",
   "วันกำหนดส่งงาน",
 ];
+
 export default function CustomerStatus() {
   const [activeStep, setActiveStep] = React.useState(0);
   return (
@@ -70,10 +71,22 @@ export default function CustomerStatus() {
             </Step>
           ))}
         </Stepper>
-        <div className="grid grid-rows-5">
-          {title.map((t) => (
-            <div>{t}</div>
-          ))}
+        <div>
+          <div>
+            <span></span>
+          </div>
+          <div>
+            <span></span>
+          </div>
+          <div>
+            <span></span>
+          </div>
+          <div>
+            <span></span>
+          </div>
+          <div>
+            <span></span>
+          </div>
         </div>
       </div>
     </div>
