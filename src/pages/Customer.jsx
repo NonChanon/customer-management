@@ -50,7 +50,7 @@ const TABLE_ROWS = [
 
 export function Customer() {
   return (
-    <div className="bg-[#FAFAFC] min-h-screen py-10">
+    <div className="bg-[#FAFAFC] min-h-screen py-5">
       <div className="w-[90%] mx-auto">
         <div className="bg-white w-20 md:w-40 h-10 md:h-12 flex items-center justify-center rounded-ss-md shadow-lg">
           <span className="absolute z-10 flex items-center font-[600] md:text-xl pl-10 pt-2 text-indigo-600">
@@ -101,7 +101,11 @@ export function Customer() {
                     <td className="px-6 py-4">{row.name}</td>
                     <td className="px-6 py-4">{row.merchain}</td>
                     <td className="hidden px-6 py-4 md:flex justify-center items-center">
-                      <Icon icon="mdi:clipboard-edit-outline" width="24" />
+                      <Icon
+                        icon="mdi:clipboard-edit-outline"
+                        width="24"
+                        className="cursor-pointer"
+                      />
                     </td>
                   </tr>
                 ))}
