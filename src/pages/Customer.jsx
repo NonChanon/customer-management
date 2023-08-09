@@ -2,8 +2,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { UserPlusIcon } from "@heroicons/react/24/solid";
 import { Icon } from "@iconify/react";
 import { Input, Button, IconButton } from "@material-tailwind/react";
-
-const TABLE_HEAD = ["No.", "Customer Name", "Merchaindiser"];
+import { Link } from "react-router-dom";
 
 const TABLE_ROWS = [
   {
@@ -69,13 +68,15 @@ export function Customer() {
               <UserPlusIcon strokeWidth={2} className="h-4 w-4" />
             </IconButton>
             <div className="hidden md:flex gap-2">
-              <Button
-                className="flex items-center gap-3 shadow-none"
-                color="indigo"
-              >
-                <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Add
-                Customer
-              </Button>
+              <a href="/addcustomer">
+                <Button
+                  className="flex items-center gap-3 shadow-none"
+                  color="indigo"
+                >
+                  <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Add
+                  Customer
+                </Button>
+              </a>
             </div>
             <div className="md:w-72 bg-white">
               <Input
@@ -101,11 +102,13 @@ export function Customer() {
                     <td className="px-6 py-4">{row.name}</td>
                     <td className="px-6 py-4">{row.merchain}</td>
                     <td className="hidden px-6 py-4 md:flex justify-center items-center">
-                      <Icon
-                        icon="mdi:clipboard-edit-outline"
-                        width="24"
-                        className="cursor-pointer"
-                      />
+                      <Link to="/addcustomer">
+                        <Icon
+                          icon="mdi:clipboard-edit-outline"
+                          width="24"
+                          className="cursor-pointer"
+                        />
+                      </Link>
                     </td>
                   </tr>
                 ))}
