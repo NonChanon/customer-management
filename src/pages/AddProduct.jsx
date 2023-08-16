@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Date from "../components/Date";
 
 const status = [
+  "รับงาน",
   "ส่งมอบ Prototype",
   "เตรียมเอกสาร",
   "ส่งมอบตัวอย่าง Product",
