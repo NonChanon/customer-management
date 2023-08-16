@@ -14,8 +14,8 @@ export default function AddCustomer() {
         </span>
         <div className="mt-7 flex flex-col gap-6 w-full">
           <Input color="indigo" size="lg" label="Customer Name" />
-          <Input color="indigo" size="lg" label="Job Title" />
-          <Input color="indigo" size="lg" label="Responsible Man" />
+          <Input color="indigo" size="lg" label="E-Mail" />
+          <Input color="indigo" size="lg" label="Contact Number" />
         </div>
         <Button
           variant="text"
@@ -36,7 +36,7 @@ export default function AddCustomer() {
           SAVE
         </Button>
       </form>
-      {isOpen && <AddProduct onClick={setIsOpen}/>}
+      {isOpen && <AddProduct onClick={setIsOpen} />}
     </div>
   );
 }

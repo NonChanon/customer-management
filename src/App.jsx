@@ -4,10 +4,12 @@ import { Customer } from "./pages/Customer";
 import AddCustomer from "./pages/AddCustomer";
 import AddProduct from "./pages/AddProduct";
 import CustomerStatus from "./pages/CustomerStatus";
+import { ComplexNavbar } from "./components/Navbar";
 
 function App() {
   return (
     <>
+      <ComplexNavbar />
       <Routes>
         <Route path="/" element={<Customer />} />
         <Route path="/login" element={<Login />} />

@@ -49,7 +49,7 @@ const TABLE_ROWS = [
 
 export function Customer() {
   return (
-    <div className="bg-[#FAFAFC] min-h-screen py-5">
+    <div className="bg-[#FAFAFC] min-h-screen py-10">
       <div className="w-[90%] mx-auto">
         <div className="bg-white w-20 md:w-40 h-10 md:h-12 flex items-center justify-center rounded-ss-md shadow-lg">
           <span className="absolute z-10 flex items-center font-[600] md:text-xl pl-10 pt-2 text-indigo-600">
@@ -89,19 +89,17 @@ export function Customer() {
             <table className="flex-col justify-between w-full text-center border-b border-[#DFDFDF] text-sm ">
               <thead className="text-[#818181] border-b border-[#DFDFDF]">
                 <tr>
-                  <th className="px-6 pb-4 hidden md:block">No.</th>
+                  <th className="px-6 pb-4">No.</th>
                   <th className="px-6 pb-4">Customer Name</th>
-                  <th className="px-6 pb-4">Merchaindiser</th>
-                  <th className="px-6 pb-4 hidden md:block">Action</th>
+                  <th className="px-6 pb-4">Action</th>
                 </tr>
               </thead>
               <tbody className="text-[#1C3879]">
                 {TABLE_ROWS.map((row, i) => (
                   <tr>
-                    <td className="hidden px-6 py-4 md:block">{i + 1}</td>
+                    <td className="px-6 py-4">{i + 1}</td>
                     <td className="px-6 py-4">{row.name}</td>
-                    <td className="px-6 py-4">{row.merchain}</td>
-                    <td className="hidden px-6 py-4 md:flex justify-center items-center">
+                    <td className="flex px-6 py-4 justify-center items-center">
                       <Link to="/addcustomer">
                         <Icon
                           icon="mdi:clipboard-edit-outline"
