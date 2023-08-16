@@ -18,12 +18,12 @@ const stepToppic = [
   { name: "จัดส่งสินค้า", icon: "iconamoon:delivery-fast-fill" },
 ];
 
-const title = [
-  "ชื่อ",
-  "ชื่อสินค้าที่สั่งผลิต",
-  "Product Style",
-  "สถานะล่าสุด",
-  "วันกำหนดส่งงาน",
+const status_detail = [
+  { name: "ชื่อ", detail: "นายจ๊าก" },
+  { name: "ชื่อสินค้าที่สั่งผลิต", detail: "เสื้อยืด" },
+  { name: "Product Style", detail: "ยื้ดยืด" },
+  { name: "สถานะล่าสุด", detail: "รับงาน" },
+  { name: "วันกำหนดส่งงาน", detail: "02/07/2023" },
 ];
 
 export default function CustomerStatus() {
@@ -71,22 +71,13 @@ export default function CustomerStatus() {
             </Step>
           ))}
         </Stepper>
-        <div>
-          <div>
-            <span></span>
-          </div>
-          <div>
-            <span></span>
-          </div>
-          <div>
-            <span></span>
-          </div>
-          <div>
-            <span></span>
-          </div>
-          <div>
-            <span></span>
-          </div>
+        <div className="mt-40">
+          {status_detail.map((status) => (
+            <div className="grid grid-cols-2 mt-5">
+              <span>{status.name}</span>
+              <span>: {status.detail}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
