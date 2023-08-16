@@ -30,7 +30,7 @@ export default function CustomerStatus() {
   const [activeStep, setActiveStep] = React.useState(0);
   return (
     <div className="bg-[#FAFAFC] min-h-screen">
-      <div className="container mx-auto py-10">
+      <div className="container mx-auto py-24">
         <Stepper
           activeStep={activeStep}
           activeLineClassName={
@@ -71,13 +71,16 @@ export default function CustomerStatus() {
             </Step>
           ))}
         </Stepper>
-        <div className="mt-40">
-          {status_detail.map((status) => (
-            <div className="grid grid-cols-2 mt-5">
-              <span>{status.name}</span>
-              <span>: {status.detail}</span>
-            </div>
-          ))}
+        <div className="mt-32 flex justify-center">
+          <div>
+            {status_detail.map((status) => (
+              <div className="w-80 grid grid-cols-4 mt-5">
+                <span className="col-span-2">{status.name}</span>
+                <span>:</span>
+                <span>{status.detail}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

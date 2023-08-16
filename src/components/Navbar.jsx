@@ -37,7 +37,7 @@ function ProfileMenu() {
         <Button
           variant="text"
           color="blue-gray"
-          className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
+          className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5"
         >
           <Avatar
             variant="circular"
@@ -94,7 +94,7 @@ export function ComplexNavbar() {
   return (
     <Navbar
       color="white"
-      className="fixed top-0 z-20 h-max max-w-full rounded-none py-2 px-4"
+      className="fixed flex top-0 z-20 h-max max-w-full rounded-none py-2 px-4 bg-opacity-100 justify-end"
     >
       <ProfileMenu />
     </Navbar>
