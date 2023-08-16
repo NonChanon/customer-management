@@ -10,30 +10,15 @@ import {
   Avatar,
 } from "@material-tailwind/react";
 import {
-  UserCircleIcon,
   ChevronDownIcon,
   Cog6ToothIcon,
-  InboxArrowDownIcon,
-  LifebuoyIcon,
   PowerIcon,
 } from "@heroicons/react/24/outline";
 
 const profileMenuItems = [
   {
-    label: "My Profile",
-    icon: UserCircleIcon,
-  },
-  {
     label: "Edit Profile",
     icon: Cog6ToothIcon,
-  },
-  {
-    label: "Inbox",
-    icon: InboxArrowDownIcon,
-  },
-  {
-    label: "Help",
-    icon: LifebuoyIcon,
   },
   {
     label: "Sign Out",
@@ -61,6 +46,9 @@ function ProfileMenu() {
             className="border border-gray-900 p-0.5"
             src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
           />
+          <Typography className="normal-case text-sm mx-2 font-Rubik">
+            Manhermak Praditpong
+          </Typography>
           <ChevronDownIcon
             strokeWidth={2.5}
             className={`h-3 w-3 transition-transform ${
@@ -104,7 +92,10 @@ function ProfileMenu() {
 
 export function ComplexNavbar() {
   return (
-    <Navbar className="w-screen p-2 ">
+    <Navbar
+      color="white"
+      className="fixed top-0 z-20 h-max max-w-full rounded-none py-2 px-4"
+    >
       <ProfileMenu />
     </Navbar>
   );
