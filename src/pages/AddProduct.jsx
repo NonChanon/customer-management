@@ -14,6 +14,21 @@ const status = [
 ];
 
 export default function AddProduct(props) {
+  const [detail, setDetail] = useState({
+    name: "",
+    quantity: "",
+  });
+
+  const handleChange = (e) => {
+    setDetail({ ...detail, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    props.onSubmit(detail);
+    props.onClick();
+    e.preventDefault();
+  };
+
   return (
     <div className="w-screen h-screen flex justify-center items-center absolute top-0 left-0 z-10 bg-[#FAFAFC]">
       <div
@@ -25,8 +40,20 @@ export default function AddProduct(props) {
           ADD PRODUCT
         </span>
         <div className="mt-7 flex flex-col gap-4 w-full overflow-auto">
-          <Input color="indigo" size="lg" label="Product Name" />
-          <Input color="indigo" size="lg" label="Quantity" />
+          <Input
+            color="indigo"
+            size="lg"
+            label="Product Name"
+            name="name"
+            onChange={handleChange}
+          />
+          <Input
+            color="indigo"
+            size="lg"
+            label="Quantity"
+            name="quantity"
+            onChange={handleChange}
+          />
           <div className="grid grid-cols-5 md:gap-3 items-center text-sm text-center">
             <span className="text-indigo-600 col-start-2 col-span-2 hidden md:block">
               Estimated Date
@@ -54,7 +81,7 @@ export default function AddProduct(props) {
             size="sm"
             className="flex items-center justify-center gap-1 h-[44px] ml-2 w-full md:w-28 shadow-none hover:shadow-none"
             color="indigo"
-            onClick={props.onClick}
+            onClick={handleSubmit}
           >
             <Icon icon="fluent:save-16-filled" width="16" />
             SAVE

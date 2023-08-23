@@ -4,10 +4,16 @@ import React from "react";
 import { useToggle } from "../hooks/useToggle";
 import AddProduct from "./AddProduct";
 
-const product = ["เสื้อจ้า", "กางเกงจ้า"];
+const product = [];
 
 export default function AddCustomer() {
   const { status: isOpen, toggleStatus: setIsOpen } = useToggle();
+
+  const getData = (data) => {
+    console.log(data);
+    product.push(data);
+    console.log(product);
+  };
   return (
     <div className="flex justify-center items-center min-h-screen bg-[#FAFAFC]">
       <form className="flex flex-col w-[90%] max-w-[400px] -mt-[50px] p-10 rounded-lg shadow-xl bg-white">
@@ -24,11 +30,11 @@ export default function AddCustomer() {
         ) : (
           <div className="mt-4" />
         )}
-        {product.map((name) => (
+        {product.map((prod) => (
           <div className="flex justify-between items-center mt-2 text-indigo-600">
             <div className="flex items-center">
               <Icon icon="radix-icons:dot-filled" />
-              <div className="text-sm ml-1">{name}</div>
+              <div className="text-sm ml-1">{prod.name}</div>
             </div>
             <div className="flex">
               <Icon
@@ -60,7 +66,7 @@ export default function AddCustomer() {
           SAVE
         </Button>
       </form>
-      {isOpen && <AddProduct onClick={setIsOpen} />}
+      {isOpen && <AddProduct onClick={setIsOpen} onSubmit={getData} />}
     </div>
   );
 }
