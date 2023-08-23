@@ -18,19 +18,19 @@ const stepToppic = [
   { name: "จัดส่งสินค้า", icon: "iconamoon:delivery-fast-fill" },
 ];
 
-const title = [
-  "ชื่อ",
-  "ชื่อสินค้าที่สั่งผลิต",
-  "Product Style",
-  "สถานะล่าสุด",
-  "วันกำหนดส่งงาน",
+const status_detail = [
+  { name: "ชื่อ", detail: "นายจ๊าก" },
+  { name: "ชื่อสินค้าที่สั่งผลิต", detail: "เสื้อยืด" },
+  { name: "Product Style", detail: "ยื้ดยืด" },
+  { name: "สถานะล่าสุด", detail: "รับงาน" },
+  { name: "วันกำหนดส่งงาน", detail: "02/07/2023" },
 ];
 
 export default function CustomerStatus() {
   const [activeStep, setActiveStep] = React.useState(0);
   return (
     <div className="bg-[#FAFAFC] min-h-screen">
-      <div className="container mx-auto py-10">
+      <div className="container mx-auto py-24">
         <Stepper
           activeStep={activeStep}
           activeLineClassName={
@@ -71,21 +71,15 @@ export default function CustomerStatus() {
             </Step>
           ))}
         </Stepper>
-        <div>
+        <div className="mt-32 flex justify-center">
           <div>
-            <span></span>
-          </div>
-          <div>
-            <span></span>
-          </div>
-          <div>
-            <span></span>
-          </div>
-          <div>
-            <span></span>
-          </div>
-          <div>
-            <span></span>
+            {status_detail.map((status) => (
+              <div className="w-80 grid grid-cols-4 mt-5">
+                <span className="col-span-2">{status.name}</span>
+                <span>:</span>
+                <span>{status.detail}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
