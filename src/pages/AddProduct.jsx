@@ -20,7 +20,7 @@ export default function AddProduct(props) {
         className="w-screen h-screen bg-black/50 fixed top-0 left-0"
         onClick={props.onClick}
       />
-      <form className="fixed flex flex-col  h-[90vh] md:h-auto w-[350px] md:w-[600px] p-10 rounded-lg shadow-xl bg-white">
+      <form className="fixed flex flex-col  h-[80vh] md:h-auto w-[90%] max-w-[600px] p-10 rounded-lg shadow-xl bg-white">
         <span className="text-xl font-bold text-indigo-600 text-center">
           ADD PRODUCT
         </span>
