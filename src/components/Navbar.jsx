@@ -104,7 +104,7 @@ function ProfileMenu() {
 
 export function ComplexNavbar() {
   return (
-    <Navbar className="w-screen p-2 ">
+    <Navbar className="w-screen p-2">
       <ProfileMenu />
     </Navbar>
   );
