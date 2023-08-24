@@ -3,6 +3,7 @@ import { Button, Input } from "@material-tailwind/react";
 import React from "react";
 import { useToggle } from "../hooks/useToggle";
 import AddProduct from "./AddProduct";
+import { useState } from "react";
 
 const product = [];
 
@@ -14,6 +15,17 @@ export default function AddCustomer() {
     product.push(data);
     console.log(product);
   };
+
+  const loadData = () => {
+    product;
+  };
+
+  const deleteData = (e, i) => {
+    console.log("delete Success");
+    product.splice(i);
+    console.log(product);
+  };
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-[#FAFAFC]">
       <form className="flex flex-col w-[90%] max-w-[400px] -mt-[50px] p-10 rounded-lg shadow-xl bg-white">
@@ -30,7 +42,7 @@ export default function AddCustomer() {
         ) : (
           <div className="mt-4" />
         )}
-        {product.map((prod) => (
+        {product.map((prod, i) => (
           <div className="flex justify-between items-center mt-2 text-indigo-600">
             <div className="flex items-center">
               <Icon icon="radix-icons:dot-filled" />
@@ -41,8 +53,19 @@ export default function AddCustomer() {
                 icon="majesticons:send"
                 className="mx-[6px] cursor-pointer"
               />
-              <Icon icon="mdi:edit" className="mx-[6px] cursor-pointer" />
-              <Icon icon="mdi:bin" className="ml-[6px] cursor-pointer" />
+              <Icon
+                icon="mdi:edit"
+                className="mx-[6px] cursor-pointer"
+                onClick={(e) => {
+                  l;
+                  setIsOpen();
+                }}
+              />
+              <Icon
+                icon="mdi:bin"
+                className="ml-[6px] cursor-pointer"
+                onClick={(e) => deleteData(e, i)}
+              />
             </div>
           </div>
         ))}
