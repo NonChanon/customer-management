@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 import { Button, Input } from "@material-tailwind/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Date from "../components/Date";
 
 const status = [
@@ -13,7 +13,12 @@ const status = [
   "จัดส่งสินค้า",
 ];
 
-export default function AddProduct(props) {
+export default function EditProduct(props) {
+  useEffect(() => {
+    console.log(props.detail);
+    setDetail({ name: props.detail.name, quantity: props.detail.quantity });
+  }, []);
+
   const [detail, setDetail] = useState({
     name: "",
     quantity: "",
@@ -37,7 +42,7 @@ export default function AddProduct(props) {
       />
       <form className="fixed flex flex-col  h-[90vh] max-h-[750px] w-[90%] z-50 max-w-[600px] p-10 rounded-lg shadow-xl bg-white">
         <span className="text-xl font-bold text-indigo-600 text-center">
-          ADD PRODUCT
+          EDIT PRODUCT
         </span>
         <div className="mt-5 flex flex-col gap-4 w-full overflow-auto pt-2">
           <Input
@@ -46,6 +51,7 @@ export default function AddProduct(props) {
             label="Product Name"
             name="name"
             onChange={handleChange}
+            value={detail.name}
           />
           <Input
             color="indigo"
@@ -53,6 +59,7 @@ export default function AddProduct(props) {
             label="Quantity"
             name="quantity"
             onChange={handleChange}
+            value={detail.quantity}
           />
           <div className="grid grid-cols-5 md:gap-3 items-center text-sm text-center">
             <span className="text-indigo-600 col-start-2 col-span-2 hidden md:block">
