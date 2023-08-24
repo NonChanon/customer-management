@@ -3,12 +3,32 @@ import { Button, Input } from "@material-tailwind/react";
 import React from "react";
 import { useToggle } from "../hooks/useToggle";
 import AddProduct from "./AddProduct";
+import { useState } from "react";
+
+const product = [];
 
 export default function AddCustomer() {
   const { status: isOpen, toggleStatus: setIsOpen } = useToggle();
+
+  const getData = (data) => {
+    console.log(data);
+    product.push(data);
+    console.log(product);
+  };
+
+  const loadData = () => {
+    product;
+  };
+
+  const deleteData = (e, i) => {
+    console.log("delete Success");
+    product.splice(i);
+    console.log(product);
+  };
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-[#FAFAFC]">
-      <form className="flex flex-col w-[340px] md:w-96 -mt-[50px] p-10 rounded-lg shadow-xl bg-white">
+      <form className="flex flex-col w-[90%] max-w-[400px] -mt-[50px] p-10 rounded-lg shadow-xl bg-white">
         <span className="text-xl font-bold text-indigo-600 text-center">
           ADD CUSTOMER
         </span>
@@ -17,6 +37,39 @@ export default function AddCustomer() {
           <Input color="indigo" size="lg" label="E-Mail" />
           <Input color="indigo" size="lg" label="Contact Number" />
         </div>
+        {product[0] == null ? (
+          <div className="mt-0" />
+        ) : (
+          <div className="mt-4" />
+        )}
+        {product.map((prod, i) => (
+          <div className="flex justify-between items-center mt-2 text-indigo-600">
+            <div className="flex items-center">
+              <Icon icon="radix-icons:dot-filled" />
+              <div className="text-sm ml-1">{prod.name}</div>
+            </div>
+            <div className="flex">
+              <Icon
+                icon="majesticons:send"
+                className="mx-[6px] cursor-pointer"
+              />
+              <Icon
+                icon="mdi:edit"
+                className="mx-[6px] cursor-pointer"
+                onClick={(e) => {
+                  l;
+                  setIsOpen();
+                }}
+              />
+              <Icon
+                icon="mdi:bin"
+                className="ml-[6px] cursor-pointer"
+                onClick={(e) => deleteData(e, i)}
+              />
+            </div>
+          </div>
+        ))}
+
         <Button
           variant="text"
           className="flex items-center gap-1 p-0 mt-5 mb-7 w-fit  hover:bg-white"
@@ -24,7 +77,7 @@ export default function AddCustomer() {
           color="indigo"
           onClick={setIsOpen}
         >
-          <Icon icon="entypo:plus" width="18" />
+          <Icon icon="entypo:plus" width="16" />
           Product
         </Button>
         <Button
@@ -36,7 +89,7 @@ export default function AddCustomer() {
           SAVE
         </Button>
       </form>
-      {isOpen && <AddProduct onClick={setIsOpen} />}
+      {isOpen && <AddProduct onClick={setIsOpen} onSubmit={getData} />}
     </div>
   );
 }

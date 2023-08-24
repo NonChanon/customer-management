@@ -2,14 +2,22 @@ import React, { useState } from "react";
 import Datepicker from "react-tailwindcss-datepicker";
 
 export default function Date(props) {
-  const [value, setValue] = useState({
+  const [estimatedValue, setEstimatedValue] = useState({
     startDate: null,
     endDate: null,
   });
 
-  const handleValueChange = (newValue) => {
-    console.log("newValue:", newValue);
-    setValue(newValue);
+  const [actualValue, setActualValue] = useState({
+    startDate: null,
+    endDate: null,
+  });
+
+  const handleActualValueChange = (newValue) => {
+    setEstimatedValue(newValue);
+  };
+
+  const handleEstimatedValueChange = (newValue) => {
+    setActualValue(newValue);
   };
 
   return (
@@ -24,9 +32,9 @@ export default function Date(props) {
       <Datepicker
         useRange={false}
         asSingle={true}
-        value={value}
+        value={estimatedValue}
         displayFormat="DD/MM/YYYY"
-        onChange={handleValueChange}
+        onChange={handleActualValueChange}
         inputClassName="w-full h-10 px-3 py-2 border-[1px] rounded-md border-blue-gray-200 text-xs focus:outline-indigo-500 placeholder:text-blue-gray-500"
         containerClassName="relative text-blue-gray-700 col-span-2"
       />
@@ -36,9 +44,9 @@ export default function Date(props) {
       <Datepicker
         useRange={false}
         asSingle={true}
-        value={value}
+        value={actualValue}
         displayFormat="DD/MM/YYYY"
-        onChange={handleValueChange}
+        onChange={handleEstimatedValueChange}
         inputClassName="w-full h-10 px-3 py-2 border-[1px] rounded-md border-blue-gray-200 text-xs focus:outline-indigo-500 placeholder:text-blue-gray-500"
         containerClassName="relative text-blue-gray-700 col-span-2 mb-2 md:mb-0"
       />
