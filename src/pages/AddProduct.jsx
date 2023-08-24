@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 import { Button, Input } from "@material-tailwind/react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Date from "../components/Date";
 
 const status = [
@@ -19,12 +19,17 @@ export default function AddProduct(props) {
     quantity: "",
   });
 
+  useEffect(() => {
+    setDetail({ name: props.detail.name, quantity: props.detail.quantity });
+  }, []);
+
   const handleChange = (e) => {
     setDetail({ ...detail, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
-    props.onSubmit(detail);
+    console.log(props.index);
+    props.onSubmit(detail, props.index);
     props.onClick();
     e.preventDefault();
   };
@@ -37,7 +42,7 @@ export default function AddProduct(props) {
       />
       <form className="fixed flex flex-col  h-[90vh] max-h-[750px] w-[90%] z-50 max-w-[600px] p-10 rounded-lg shadow-xl bg-white">
         <span className="text-xl font-bold text-indigo-600 text-center">
-          ADD PRODUCT
+          {props.name}
         </span>
         <div className="mt-5 flex flex-col gap-4 w-full overflow-auto pt-2">
           <Input
@@ -45,6 +50,7 @@ export default function AddProduct(props) {
             size="lg"
             label="Product Name"
             name="name"
+            value={detail.name}
             onChange={handleChange}
           />
           <Input
@@ -52,6 +58,7 @@ export default function AddProduct(props) {
             size="lg"
             label="Quantity"
             name="quantity"
+            value={detail.quantity}
             onChange={handleChange}
           />
           <div className="grid grid-cols-5 md:gap-3 items-center text-sm text-center">

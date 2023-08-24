@@ -1,27 +1,29 @@
 import { Icon } from "@iconify/react";
 import { Button, Input } from "@material-tailwind/react";
-import React from "react";
+import { React, useState } from "react";
 import { useToggle } from "../hooks/useToggle";
 import AddProduct from "./AddProduct";
-import { useState } from "react";
-import EditProduct from "./EditProduct";
-
-const product = [];
 
 export default function AddCustomer() {
   const { status: isOpen, toggleStatus: setIsOpen } = useToggle();
   const { status: isEditOpen, toggleStatus: setIsEditOpen } = useToggle();
+  const [product, setProduct] = useState([]);
 
   const getData = (data) => {
     console.log(data);
-    product.push(data);
-    console.log(product);
+    setProduct([...product, data]);
   };
 
-  const deleteData = (e, i) => {
+  const editData = (data, i) => {
+    console.log(data);
+    product[i] = data;
+  };
+
+  const deleteData = (i) => {
     console.log("delete Success");
-    product.splice(i);
-    console.log(product);
+    const temp = [...product];
+    temp.splice(i, 1);
+    setProduct(temp);
   };
 
   return (
@@ -59,14 +61,19 @@ export default function AddCustomer() {
               <Icon
                 icon="mdi:bin"
                 className="ml-[6px] cursor-pointer"
-                onClick={(e) => deleteData(e, i)}
+                onClick={(e) => {
+                  deleteData(i);
+                  setKey((k) => k + 1);
+                }}
               />
             </div>
             {isEditOpen && (
-              <EditProduct
+              <AddProduct
                 onClick={setIsEditOpen}
                 detail={prod}
-                onSubmit={getData}
+                index={i}
+                onSubmit={editData}
+                name="EDIT PRODUCT"
               />
             )}
           </div>
@@ -91,7 +98,14 @@ export default function AddCustomer() {
           SAVE
         </Button>
       </form>
-      {isOpen && <AddProduct onClick={setIsOpen} onSubmit={getData} />}
+      {isOpen && (
+        <AddProduct
+          onClick={setIsOpen}
+          onSubmit={getData}
+          detail=""
+          name="ADD PRODUCT"
+        />
+      )}
     </div>
   );
 }

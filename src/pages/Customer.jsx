@@ -52,7 +52,7 @@ export function Customer() {
     <div className="bg-[#FAFAFC] min-h-screen py-20">
       <div className="w-[90%] mx-auto">
         <div className="bg-white w-20 md:w-40 h-10 md:h-12 flex items-center justify-center rounded-ss-md shadow-lg">
-          <span className="absolute z-10 flex items-center font-[600] md:text-xl pl-10 pt-2 text-indigo-600">
+          <span className="absolute z-[6] flex items-center font-[600] md:text-xl pl-10 pt-2 text-indigo-600">
             <Icon icon="fa6-solid:list-ul" className="mr-2 hidden md:block" />
             Customer
           </span>
