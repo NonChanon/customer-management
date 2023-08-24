@@ -4,20 +4,18 @@ import React from "react";
 import { useToggle } from "../hooks/useToggle";
 import AddProduct from "./AddProduct";
 import { useState } from "react";
+import EditProduct from "./EditProduct";
 
 const product = [];
 
 export default function AddCustomer() {
   const { status: isOpen, toggleStatus: setIsOpen } = useToggle();
+  const { status: isEditOpen, toggleStatus: setIsEditOpen } = useToggle();
 
   const getData = (data) => {
     console.log(data);
     product.push(data);
     console.log(product);
-  };
-
-  const loadData = () => {
-    product;
   };
 
   const deleteData = (e, i) => {
@@ -56,10 +54,7 @@ export default function AddCustomer() {
               <Icon
                 icon="mdi:edit"
                 className="mx-[6px] cursor-pointer"
-                onClick={(e) => {
-                  l;
-                  setIsOpen();
-                }}
+                onClick={setIsEditOpen}
               />
               <Icon
                 icon="mdi:bin"
@@ -67,12 +62,19 @@ export default function AddCustomer() {
                 onClick={(e) => deleteData(e, i)}
               />
             </div>
+            {isEditOpen && (
+              <EditProduct
+                onClick={setIsEditOpen}
+                detail={prod}
+                onSubmit={getData}
+              />
+            )}
           </div>
         ))}
 
         <Button
           variant="text"
-          className="flex items-center gap-1 p-0 mt-5 mb-7 w-fit  hover:bg-white"
+          className="flex items-center gap-1 p-0 mt-5 mb-7 w-fit  hover:bg-white pr-1"
           fullWidth
           color="indigo"
           onClick={setIsOpen}
