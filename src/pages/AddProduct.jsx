@@ -17,6 +17,20 @@ export default function AddProduct(props) {
   const [detail, setDetail] = useState({
     name: "",
     quantity: "",
+    estDate1: null,
+    actDate1: null,
+    estDate2: null,
+    actDate2: null,
+    estDate3: null,
+    actDate3: null,
+    estDate4: null,
+    actDate4: null,
+    estDate5: null,
+    actDate5: null,
+    estDate6: null,
+    actDate6: null,
+    estDate7: null,
+    actDate7: null,
   });
 
   useEffect(() => {
@@ -32,6 +46,10 @@ export default function AddProduct(props) {
     props.onSubmit(detail, props.index);
     props.onClick();
     e.preventDefault();
+  };
+
+  const getDate = (data, i) => {
+    console.log(data);
   };
 
   return (
@@ -69,8 +87,18 @@ export default function AddProduct(props) {
               Actual Date
             </span>
           </div>
-          {status.map((step) => (
-            <Date name={step} />
+          {status.map((step, i) => (
+            <div className="md:grid md:grid-cols-5 gap-3 items-center text-sm md:text-end">
+              <span className="text-indigo-600 font-semibold md:font-normal">
+                {step}
+              </span>
+              <div className="col-span-2">
+                <Date onChange={getDate} date="(Estimated Date)" index={i} />
+              </div>
+              <div className="col-span-2">
+                <Date onChange={getDate} date="(Actual Date)" index={i} />
+              </div>
+            </div>
           ))}
         </div>
         <div className="flex justify-end mt-5">

@@ -63,7 +63,6 @@ export default function AddCustomer() {
                 className="ml-[6px] cursor-pointer"
                 onClick={(e) => {
                   deleteData(i);
-                  setKey((k) => k + 1);
                 }}
               />
             </div>
