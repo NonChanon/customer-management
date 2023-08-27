@@ -3,6 +3,7 @@ import { Button, Input } from "@material-tailwind/react";
 import { React, useState } from "react";
 import { useToggle } from "../hooks/useToggle";
 import AddProduct from "./AddProduct";
+import { Link } from "react-router-dom";
 
 export default function AddCustomer() {
   const { status: isOpen, toggleStatus: setIsOpen } = useToggle();
@@ -28,6 +29,11 @@ export default function AddCustomer() {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-[#FAFAFC]">
+      <div className="absolute left-[8%] top-[15%] text-indigo-600">
+        <Link to="/">
+          <Icon icon="ion:chevron-back-outline" width="20" />
+        </Link>
+      </div>
       <form className="flex flex-col w-[90%] max-w-[400px] -mt-[50px] p-10 rounded-lg shadow-xl bg-white">
         <span className="text-xl font-bold text-indigo-600 text-center">
           ADD CUSTOMER
