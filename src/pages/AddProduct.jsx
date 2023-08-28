@@ -42,8 +42,7 @@ export default function AddProduct(props) {
   };
 
   const handleSubmit = (e) => {
-    console.log(props.index);
-    props.onSubmit(detail, props.index);
+    props.onSubmit(detail);
     props.onClick();
     e.preventDefault();
   };

@@ -9,6 +9,7 @@ export default function AddCustomer() {
   const { status: isOpen, toggleStatus: setIsOpen } = useToggle();
   const { status: isEditOpen, toggleStatus: setIsEditOpen } = useToggle();
   const [product, setProduct] = useState([]);
+  const [indexValue, setIndexValue] = useState(-1);
 
   const getData = (data) => {
     console.log(data);
@@ -62,7 +63,10 @@ export default function AddCustomer() {
               <Icon
                 icon="mdi:edit"
                 className="mx-[6px] cursor-pointer"
-                onClick={setIsEditOpen}
+                onClick={() => {
+                  setIsEditOpen();
+                  setIndexValue(i);
+                }}
               />
               <Icon
                 icon="mdi:bin"
@@ -72,15 +76,6 @@ export default function AddCustomer() {
                 }}
               />
             </div>
-            {isEditOpen && (
-              <AddProduct
-                onClick={setIsEditOpen}
-                detail={prod}
-                index={i}
-                onSubmit={editData}
-                name="EDIT PRODUCT"
-              />
-            )}
           </div>
         ))}
 
@@ -103,6 +98,14 @@ export default function AddCustomer() {
           SAVE
         </Button>
       </form>
+      {isEditOpen && (
+        <AddProduct
+          onClick={setIsEditOpen}
+          onSubmit={editData}
+          detail={product[indexValue]}
+          name="EDIT PRODUCT"
+        />
+      )}
       {isOpen && (
         <AddProduct
           onClick={setIsOpen}
