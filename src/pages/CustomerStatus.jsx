@@ -30,8 +30,9 @@ export default function CustomerStatus() {
   const [activeStep, setActiveStep] = React.useState(0);
   return (
     <div className="bg-[#FAFAFC] min-h-screen">
-      <div className="container mx-auto py-24">
+      <div className="container mx-auto py-28 flex flex-col md:flex-row justify-center items-center lg:block lg:mt-0">
         <Stepper
+          className="hidden lg:flex"
           activeStep={activeStep}
           activeLineClassName={
             activeStep == 0
@@ -51,7 +52,6 @@ export default function CustomerStatus() {
         >
           {stepToppic.map((step, i) => (
             <Step
-              onClick={() => setActiveStep(i)}
               activeClassName="ring-indigo-100 !bg-indigo-500 text-white"
               completedClassName="!bg-indigo-500 text-white"
             >
@@ -71,12 +71,44 @@ export default function CustomerStatus() {
             </Step>
           ))}
         </Stepper>
-        <div className="mt-32 flex justify-center">
+        <ol className="relative text-gray-500 border-l border-gray-200 lg:hidden">
+          {stepToppic.map((step, i) => (
+            <li
+              className={
+                i == 6
+                  ? "ml-6 flex items-center"
+                  : "pb-10 ml-6 flex items-center"
+              }
+            >
+              <span
+                className={
+                  activeStep >= i
+                    ? "absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ring-indigo-100 bg-indigo-500"
+                    : "absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 bg-blue-gray-200"
+                }
+              >
+                <Icon icon={step.icon} color="white" width="20" height="20" />
+              </span>
+              <h3
+                className={
+                  activeStep >= i
+                    ? "font-medium leading-tight ml-3 text-indigo-500"
+                    : "font-medium leading-tight ml-3"
+                }
+              >
+                {step.name}
+              </h3>
+            </li>
+          ))}
+        </ol>
+        <div className="lg:mt-40 flex justify-center text-indigo-800 md:ml-28 lg:ml-0 lg:text-lg mt-12 md:mt-0">
           <div>
             {status_detail.map((status) => (
-              <div className="w-80 grid grid-cols-4 mt-5">
+              <div className="w-64 md:w-80 grid grid-cols-4 mt-5">
                 <span className="col-span-2">{status.name}</span>
-                <span>:</span>
+                <div className="flex justify-center pr-5">
+                  <span>:</span>
+                </div>
                 <span>{status.detail}</span>
               </div>
             ))}
