@@ -40,7 +40,7 @@ const TABLE_ROWS = [
     line: "nonnon",
   },
   {
-    name: "Chanon Kitbunnadaech",
+    name: "Chanon Kitbuadaech",
     password: "",
     nickname: "Non",
     email: "cha@mail.com",
@@ -48,7 +48,7 @@ const TABLE_ROWS = [
     line: "nonnon",
   },
   {
-    name: "Chanon Kitbunnadaech",
+    name: "Chanon",
     password: "",
     nickname: "Non",
     email: "cha@mail.com",
@@ -115,7 +115,7 @@ export default function UserManagement() {
               </thead>
               <tbody className="text-[#1C3879]">
                 {TABLE_ROWS.map((row, i) => (
-                  <tr>
+                  <tr className="h-[75px]">
                     <td className="px-6 py-4">{i + 1}</td>
                     <td className="px-6 py-4">{row.name}</td>
                     <td className="px-6 py-4">{row.password}</td>
@@ -123,15 +123,21 @@ export default function UserManagement() {
                     <td className="px-6 py-4">{row.email}</td>
                     <td className="px-6 py-4">{row.phone}</td>
                     <td className="px-6 py-4">{row.line}</td>
-                    <td className="flex px-6 py-4 justify-center items-center">
+                    <td className="flex px-6 py-4 justify-center h-[75px] items-center">
                       <Icon
                         icon="mdi:clipboard-edit-outline"
-                        width="24"
+                        width="22"
                         className="cursor-pointer"
                         onClick={() => {
                           setIsEditOpen();
                           setIndexValue(i);
                         }}
+                      />
+                      <Icon
+                        icon="ri:delete-bin-fill"
+                        width="22"
+                        className="cursor-pointer mb-[2px] ml-2"
+                        onClick={() => {}}
                       />
                     </td>
                   </tr>
@@ -180,15 +186,15 @@ export default function UserManagement() {
               <Icon icon="iconamoon:arrow-right-2-duotone" />
             </IconButton>
           </div>
+          {isEditOpen && (
+            <AddUser
+              onClick={setIsEditOpen}
+              detail={TABLE_ROWS[indexValue]}
+              name="EDIT USER"
+            />
+          )}
+          {isOpen && <AddUser onClick={setIsOpen} detail="" name="ADD USER" />}
         </div>
-        {isEditOpen && (
-          <AddUser
-            onClick={setIsEditOpen}
-            detail={TABLE_ROWS[indexValue]}
-            name="EDIT USER"
-          />
-        )}
-        {isOpen && <AddUser onClick={setIsOpen} detail="" name="ADD USER" />}
       </div>
     </div>
   );

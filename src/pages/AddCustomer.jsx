@@ -97,23 +97,23 @@ export default function AddCustomer() {
           <Icon icon="fluent:save-16-filled" width="16" />
           SAVE
         </Button>
+        {isEditOpen && (
+          <AddProduct
+            onClick={setIsEditOpen}
+            onSubmit={editData}
+            detail={product[indexValue]}
+            name="EDIT PRODUCT"
+          />
+        )}
+        {isOpen && (
+          <AddProduct
+            onClick={setIsOpen}
+            onSubmit={getData}
+            detail=""
+            name="ADD PRODUCT"
+          />
+        )}
       </form>
-      {isEditOpen && (
-        <AddProduct
-          onClick={setIsEditOpen}
-          onSubmit={editData}
-          detail={product[indexValue]}
-          name="EDIT PRODUCT"
-        />
-      )}
-      {isOpen && (
-        <AddProduct
-          onClick={setIsOpen}
-          onSubmit={getData}
-          detail=""
-          name="ADD PRODUCT"
-        />
-      )}
     </div>
   );
 }
