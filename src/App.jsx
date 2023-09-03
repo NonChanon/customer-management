@@ -5,6 +5,7 @@ import AddCustomer from "./pages/AddCustomer";
 import AddProduct from "./pages/AddProduct";
 import CustomerStatus from "./pages/CustomerStatus";
 import { ComplexNavbar } from "./components/Navbar";
+import UserManagement from "./pages/UserManagement";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/addcustomer" element={<AddCustomer />} />
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/status" element={<CustomerStatus />} />
+        <Route path="/manage" element={<UserManagement />} />
       </Routes>
     </>
   );
