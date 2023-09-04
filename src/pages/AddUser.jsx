@@ -44,10 +44,7 @@ export default function AddUser(props) {
   };
 
   return (
-    <div
-      className="w-screen h-screen bg-black/50 absolute top-0 left-0 z-10 flex justify-center items-center"
-      onClick={props.onClick}
-    >
+    <div className="w-screen h-screen bg-black/50 absolute top-0 left-0 z-10 flex justify-center items-center">
       <form className="flex flex-col justify-center items-center max-h-[750px] w-[90%] z-50 max-w-[400px] p-10 rounded-lg shadow-xl bg-white">
         <span className="text-xl font-bold text-indigo-600 text-center">
           {props.name}
@@ -108,9 +105,7 @@ export default function AddUser(props) {
             variant="outlined"
             className="flex items-center justify-center gap-1 h-[44px] mr-2 w-full md:w-28"
             color="indigo"
-            onClick={() => {
-              props.onClick;
-            }}
+            onClick={props.onClick}
           >
             <Icon icon="ri:delete-bin-fill" width="16" />
             CANCEL
