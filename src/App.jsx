@@ -6,6 +6,7 @@ import AddProduct from "./pages/AddProduct";
 import CustomerStatus from "./pages/CustomerStatus";
 import { ComplexNavbar } from "./components/Navbar";
 import UserManagement from "./pages/UserManagement";
+import Employee from "./pages/Employee";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/status" element={<CustomerStatus />} />
         <Route path="/manage" element={<UserManagement />} />
+        <Route path="/employee" element={<Employee />} />
       </Routes>
     </>
   );

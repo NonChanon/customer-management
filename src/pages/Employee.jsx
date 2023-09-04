@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { UserPlusIcon } from "@heroicons/react/24/solid";
 import { Icon } from "@iconify/react";
-import { Input, Button, IconButton } from "@material-tailwind/react";
+import {
+  Input,
+  Button,
+  IconButton,
+  Accordion,
+  AccordionHeader,
+  AccordionBody,
+} from "@material-tailwind/react";
 import { useToggle } from "../hooks/useToggle";
-import AddUser from "./AddUser";
 
 const TABLE_ROWS = [
   {
@@ -57,40 +62,42 @@ const TABLE_ROWS = [
   },
 ];
 
-export default function UserManagement() {
-  const { status: isOpen, toggleStatus: setIsOpen } = useToggle();
-  const { status: isEditOpen, toggleStatus: setIsEditOpen } = useToggle();
-  const [indexValue, setIndexValue] = useState(-1);
+function Icons({ id, open }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={2}
+      stroke="currentColor"
+      className={`${
+        id === open ? "rotate-180" : ""
+      } h-4 w-4 transition-transform`}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+      />
+    </svg>
+  );
+}
 
+export default function Employee() {
+  const [open, setOpen] = React.useState(-1);
+  const handleOpen = (value) => setOpen(open === value ? -1 : value);
   return (
     <div className="bg-[#FAFAFC] min-h-screen py-20">
       <div className="w-[90%] mx-auto">
-        <div className="bg-white w-36 md:w-52 h-10 md:h-12 flex items-center justify-center rounded-ss-md shadow-lg">
+        <div className="bg-white w-20 md:w-40 h-10 md:h-12 flex items-center justify-center rounded-ss-md shadow-lg">
           <span className="absolute z-[6] flex items-center font-[600] md:text-xl pl-10 pt-2 text-indigo-600">
             <Icon icon="fa6-solid:list-ul" className="mr-2 hidden md:block" />
-            User Management
+            Employee
           </span>
-          <div className="absolute bg-white skew-x-[30deg] ml-14 rounded-t-lg w-44 md:w-60 h-10 md:h-12" />
+          <div className="absolute bg-white skew-x-[30deg] ml-14 rounded-t-lg w-24 md:w-48 h-10 md:h-12" />
         </div>
         <div className="w-full p-5 bg-white rounded-lg rounded-ss-none shadow-lg">
           <div className="flex justify-between items-center mb-10">
-            <IconButton
-              variant="filled"
-              color="indigo"
-              className="shadow-none md:hidden"
-              onClick={setIsOpen}
-            >
-              <UserPlusIcon strokeWidth={2} className="h-4 w-4" />
-            </IconButton>
-            <div className="hidden md:flex gap-2">
-              <Button
-                className="flex items-center gap-3 shadow-none"
-                color="indigo"
-                onClick={setIsOpen}
-              >
-                <UserPlusIcon strokeWidth={2} className="h-4 w-4" /> Add User
-              </Button>
-            </div>
             <div className="md:w-72 bg-white">
               <Input
                 color="indigo"
@@ -100,45 +107,55 @@ export default function UserManagement() {
             </div>
           </div>
           <div className="overflow-x-auto mt-5">
-            <table className="flex-col justify-between w-full text-center border-b border-[#DFDFDF] text-sm ">
+            <table className="flex-col justify-between w-full border-b border-[#DFDFDF] text-sm ">
               <thead className="text-indigo-800 border-b border-[#DFDFDF]">
                 <tr>
                   <th className="px-6 pb-4">No.</th>
                   <th className="px-6 pb-4">Name</th>
-                  <th className="px-6 pb-4">Password</th>
-                  <th className="px-6 pb-4">Nickname</th>
-                  <th className="px-6 pb-4">Email</th>
-                  <th className="px-6 pb-4">Phone No.</th>
-                  <th className="px-6 pb-4">ID Line</th>
-                  <th className="px-6 pb-4">Action</th>
                 </tr>
               </thead>
-              <tbody className="text-[#1C3879]">
+              <tbody className="text-indigo-800">
                 {TABLE_ROWS.map((row, i) => (
-                  <tr className="h-[75px]">
-                    <td className="px-6 py-4">{i + 1}</td>
-                    <td className="px-6 py-4">{row.name}</td>
-                    <td className="px-6 py-4">{row.password}</td>
-                    <td className="px-6 py-4">{row.nickname}</td>
-                    <td className="px-6 py-4">{row.email}</td>
-                    <td className="px-6 py-4">{row.phone}</td>
-                    <td className="px-6 py-4">{row.line}</td>
-                    <td className="flex px-6 py-4 justify-center h-[75px] items-center">
-                      <Icon
-                        icon="mdi:edit"
-                        width="22"
-                        className="cursor-pointer"
-                        onClick={() => {
-                          setIsEditOpen();
-                          setIndexValue(i);
-                        }}
-                      />
-                      <Icon
-                        icon="ri:delete-bin-fill"
-                        width="22"
-                        className="cursor-pointer mb-[2px] ml-3"
-                        onClick={() => {}}
-                      />
+                  <tr className="h-[64px]">
+                    <td className="px-6 border-b text-center">{i + 1}</td>
+                    <td className="px-6 border-b">
+                      <Accordion
+                        open={open === i}
+                        icon={<Icons id={i} open={open} />}
+                      >
+                        <AccordionHeader
+                          onClick={() => handleOpen(i)}
+                          className="text-sm font-Rubik border-b-0 text-indigo-800 hover:text-indigo-800 font-normal"
+                        >
+                          {row.name}
+                        </AccordionHeader>
+                        <AccordionBody>
+                          <div className="text-center gap-3">
+                            <table className="w-full text-indigo-800">
+                              <thead>
+                                <tr>
+                                  <th className="px-6 pb-4 border-b font-normal">
+                                    Product
+                                  </th>
+                                  <th className="px-6 pb-4 border-b font-normal">
+                                    Estimated Date (จัดส่งสินค้า)
+                                  </th>
+                                  <th className="px-6 pb-4 border-b font-normal">
+                                    Actual Date (จัดส่งสินค้า)
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody className="">
+                                <tr className="h-[75px]">
+                                  <td className="px-6 ">{row.name}</td>
+                                  <td className="px-6 ">{row.password}</td>
+                                  <td className="px-6 ">{row.email}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </AccordionBody>
+                      </Accordion>
                     </td>
                   </tr>
                 ))}
@@ -186,14 +203,6 @@ export default function UserManagement() {
               <Icon icon="iconamoon:arrow-right-2-duotone" />
             </IconButton>
           </div>
-          {isEditOpen && (
-            <AddUser
-              onClick={setIsEditOpen}
-              detail={TABLE_ROWS[indexValue]}
-              name="EDIT USER"
-            />
-          )}
-          {isOpen && <AddUser onClick={setIsOpen} detail="" name="ADD USER" />}
         </div>
       </div>
     </div>

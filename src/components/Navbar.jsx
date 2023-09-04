@@ -7,7 +7,6 @@ import {
   MenuHandler,
   MenuList,
   MenuItem,
-  Avatar,
 } from "@material-tailwind/react";
 import {
   ChevronDownIcon,
@@ -16,6 +15,10 @@ import {
 } from "@heroicons/react/24/outline";
 
 const profileMenuItems = [
+  {
+    label: "User Management",
+    icon: Cog6ToothIcon,
+  },
   {
     label: "Sign Out",
     icon: PowerIcon,

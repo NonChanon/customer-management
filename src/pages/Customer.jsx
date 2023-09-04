@@ -92,7 +92,7 @@ export function Customer() {
           </div>
           <div className="overflow-x-auto mt-5">
             <table className="flex-col justify-between w-full text-center border-b border-[#DFDFDF] text-sm ">
-              <thead className="text-[#818181] border-b border-[#DFDFDF]">
+              <thead className="text-indigo-800 border-b border-[#DFDFDF]">
                 <tr>
                   <th className="px-6 pb-4">No.</th>
                   <th className="px-6 pb-4">Customer Name</th>
