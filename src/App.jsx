@@ -7,11 +7,14 @@ import CustomerStatus from "./pages/CustomerStatus";
 import { ComplexNavbar } from "./components/Navbar";
 import UserManagement from "./pages/UserManagement";
 import Employee from "./pages/Employee";
+import { ShowNavbar } from "./utils/ShowNavbar";
 
 function App() {
   return (
     <>
-      <ComplexNavbar />
+      <ShowNavbar>
+        <ComplexNavbar />
+      </ShowNavbar>
       <Routes>
         <Route path="/" element={<Customer />} />
         <Route path="/login" element={<Login />} />
