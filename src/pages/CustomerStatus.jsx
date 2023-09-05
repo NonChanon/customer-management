@@ -101,11 +101,11 @@ export default function CustomerStatus() {
             </li>
           ))}
         </ol>
-        <div className="lg:mt-40 flex justify-center text-indigo-800 md:ml-28 lg:ml-0 lg:text-lg mt-12 md:mt-0">
+        <div className="lg:mt-32 flex justify-center text-indigo-800 md:ml-28 lg:ml-0 mt-12 md:mt-0">
           <div>
             {status_detail.map((status) => (
               <div className="w-64 md:w-80 grid grid-cols-4 mt-5">
-                <span className="col-span-2">{status.name}</span>
+                <span className="col-span-2 font-Rubik">{status.name}</span>
                 <div className="flex justify-center pr-5">
                   <span>:</span>
                 </div>
