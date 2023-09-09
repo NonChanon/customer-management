@@ -118,7 +118,7 @@ export default function Employee() {
                 {TABLE_ROWS.map((row, i) => (
                   <tr className="h-[64px]">
                     <td className="px-6 border-b text-center">{i + 1}</td>
-                    <td className="px-6 border-b">
+                    <td className="pl-10 pr-4 border-b">
                       <Accordion
                         open={open === i}
                         icon={<Icons id={i} open={open} />}
@@ -127,7 +127,9 @@ export default function Employee() {
                           onClick={() => handleOpen(i)}
                           className="text-sm font-Rubik border-b-0 text-indigo-800 hover:text-indigo-800 font-normal"
                         >
-                          {row.name}
+                          <div className="w-full flex justify-center">
+                            {row.name}
+                          </div>
                         </AccordionHeader>
                         <AccordionBody>
                           <div className="text-center gap-3">
