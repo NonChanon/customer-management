@@ -12,8 +12,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { TableCell } from "@mui/material";
 
 function Row(props) {
@@ -21,7 +19,11 @@ function Row(props) {
   const [open, setOpen] = React.useState(false);
   const { status: isEditOpen, toggleStatus: setIsEditOpen } = useToggle();
   const [indexValue, setIndexValue] = useState(-1);
-
+  if (isEditOpen) {
+    document.body.classList.add("overflow-y-hidden");
+  } else {
+    document.body.classList.remove("overflow-y-hidden");
+  }
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -161,7 +163,11 @@ const TABLE_ROWS = [
 
 export default function UserManagement() {
   const { status: isOpen, toggleStatus: setIsOpen } = useToggle();
-
+  if (isOpen) {
+    document.body.classList.add("overflow-y-hidden");
+  } else {
+    document.body.classList.remove("overflow-y-hidden");
+  }
   return (
     <div className="bg-[#FAFAFC] min-h-screen py-20">
       <div className="w-[90%] mx-auto">

@@ -11,6 +11,12 @@ export default function AddCustomer() {
   const [product, setProduct] = useState([]);
   const [indexValue, setIndexValue] = useState(-1);
 
+  if (isEditOpen || isOpen) {
+    document.body.classList.add("overflow-y-hidden");
+  } else {
+    document.body.classList.remove("overflow-y-hidden");
+  }
+
   const getData = (data) => {
     console.log(data);
     setProduct([...product, data]);
@@ -71,7 +77,7 @@ export default function AddCustomer() {
               <Icon
                 icon="mdi:bin"
                 className="ml-[6px] cursor-pointer"
-                onClick={(e) => {
+                onClick={() => {
                   deleteData(i);
                 }}
               />
